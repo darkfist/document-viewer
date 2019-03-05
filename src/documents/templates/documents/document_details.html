@@ -1,0 +1,31 @@
+{% extends "base.html" %}
+{% load staticfiles %}
+{% load apptags %}
+
+{% block content %}
+
+<br>
+<div class="container">
+	
+	<div class="row">
+		<div class="col-md-6 col-md-offset-3">
+			<center>
+			<h1>{{ object.title }}</h1>
+			<p>{{ object.description }}</p>	
+			</center>	
+		</div>
+	</div>
+	<br>
+	{% with object.doc_url.url|split:"%20" as document_url %}
+		{% for url in document_url %}
+			<div class="row">
+				<div class="col-md-8 col-md-offset-2">
+					<img src="/media/{{ url|rem }}" alt="img02" class="img-responsive" /><br><br>
+				</div>	
+			</div>
+		{% endfor %}
+	{% endwith %}
+</div>
+
+
+{% endblock content %}

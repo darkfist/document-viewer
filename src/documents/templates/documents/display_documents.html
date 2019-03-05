@@ -1,0 +1,60 @@
+{% extends "base.html" %}
+{% load staticfiles %}
+{% load apptags %}
+
+{% block content %}
+
+		
+	<section id="portfolio">
+		<div class="container">
+		<div class="row">
+			<div class="col-lg-12 text-center">
+				<div class="section-title">
+					<h2>Our Works</h2>
+					<p>Our portfolio is the best way to show our work, you can see here a big range of our work. Check them all and you will find what you are looking for.</p>
+				</div>
+			</div>
+		</div>
+		<div class="row row-0-gutter">
+			{% for obj in object_list %}
+			{% with obj.doc_url.url|split:"%20" as document_url %}
+			        {% for url in document_url %}
+			<div class="col-md-6 col-0-gutter">
+				<div class="ot-portfolio-item">
+					<figure class="effect-bubba">
+						<img src="/media/{{ url|rem }}" alt="img02" class="img-responsive" />
+						<figcaption>
+							<h2>{{ obj.title }}</h2>
+							<p>Branding, Design</p>
+							<a href="{% url 'details' slug=obj.slug %}"></a>
+						</figcaption>
+					</figure>
+				</div>
+			</div>
+			{% endfor %}
+			{% endwith %}
+			{% endfor %}
+		</div>
+
+		</div>
+	</section>
+
+	<section id="about" class="mz-module">
+		<div class="container light-bg">
+			<div class="row">
+				<div class="col-lg-12 text-center">
+					<div class="section-title">
+						<h2>ABOUT</h2>
+					</div>
+				</div>
+				<div class="col-md-10 col-md-offset-1 text-center">
+					<div class="mz-about-container">
+						<p>A creative agency based on Candy Land, ready to boost your business with some beautifull templates. Lattes Agency is one of the best in town see more you will be amazed.</p>
+					</div>
+				</div>
+			</div>
+			
+		</div>
+	</section>
+
+{% endblock content %}

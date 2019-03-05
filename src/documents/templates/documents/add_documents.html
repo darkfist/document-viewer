@@ -1,0 +1,76 @@
+{% extends "base.html" %}
+{% load staticfiles %}
+
+
+{% block content %}
+
+<div class="row">
+	<div class="col-md-4 col-md-offset-4">
+		<div class="content-section">
+			<form method="POST" enctype="multipart/form-data"> {% csrf_token %}
+				<fieldset class="form-group">
+					<legend class="border-bottom mb-4">Add Documents</legend>
+					{% if errors %}
+						<p>{{ errors }}</p><br>
+					{% endif %}	
+					<div>
+						<div class="form-group">
+                            <label for="name"> Title:</label>
+                            <div><input type="text" name="title" size="65"></div>
+                        </div>
+                        <div class="form-group">
+                            <label for="name"> Description:</label>
+                            <div><textarea rows="4" cols="65" name="description"></textarea></div>
+                        </div>
+					    <div class="form-group add_form">
+                            <label for="name"> Select Documents:</label>
+                            <div><input type="file" name="document"></div><br>
+                        </div>
+                        <button class="add_document"><i class="fa fa-plus"></i> Add more</button><br>
+				     </div>
+				</fieldset>
+				<div class="form-group">
+					<center>
+					<button class="btn btn-lg btn-info" type="submit">Upload</button>
+					</center>
+				</div>
+			</form>
+		</div>
+	</div>
+</div>
+
+
+{% endblock content %}
+
+
+{% block JS %}
+
+
+<script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+<script>
+$(document).ready(function() {
+	 var x = 2;
+	   $('.add_document').click(function(e){ 
+	        e.preventDefault();
+	 		if(x <= 10){
+	        $('.add_form').append('<div class="row"><div><input type="file" id="extra" name="document" class="col-md-10"></div><a href="#" class="remove_field"><i class="fa fa-times"></i></a><br><br></div>'); 
+	        document.getElementById("extra").name = 'document' + x;
+	        document.getElementById("extra").id = 'doc';
+	        x++;
+		}
+		else if (x == 11){
+	 		$('.add_form').append('<p>You can only add 10 documents at a time</p>'); 
+	        x++;
+	    }
+	});
+	   
+    $('.add_form').on("click",".remove_field", function(e){ 
+		e.preventDefault(); 
+		$(this).parent('div').remove();
+		x--;		
+    })
+});
+	
+</script>
+
+{% endblock JS %}
