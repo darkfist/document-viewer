@@ -18,13 +18,15 @@ def add_documents(request):
 				extra = 'document' + str(i)
 				if (str(form.cleaned_data.get(extra)) != 'None'):
 					all_doc_url = all_doc_url + " " + str(form.cleaned_data.get(extra))
+
 			obj = Document.objects.create(
 					title = form.cleaned_data.get('title'), 
 					description = form.cleaned_data.get('description'),
 					doc_url = all_doc_url,
 					uploaded_by = request.user
 				)
-			return HttpResponseRedirect('/documents/view-documents/')
+
+			return HttpResponseRedirect('/')
 			
 	if form.errors:
 		errors = form.errors
@@ -43,10 +45,4 @@ def user_documents(request):
 	template_name = 'documents/user_documents.html'
 	queryset = Document.objects.filter(uploaded_by=request.user).order_by('-pk')
 	context = {"object_list": queryset}
-	return render(request, template_name, context)
-
-def document_details(request, slug):
-	template_name = 'documents/document_details.html'
-	obj = get_object_or_404(Document, slug=slug)
-	context = {"object": obj}
 	return render(request, template_name, context)

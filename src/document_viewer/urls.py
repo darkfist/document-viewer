@@ -19,17 +19,12 @@ from django.conf.urls.static import static
 from django.contrib import admin
 from django.contrib.auth.views import LoginView, LogoutView
 
-from documents.views import display_documents, add_documents, document_details
-from users.views import register 
 
 
 urlpatterns = [
+    url(r'^', include('documents.urls')),
     url(r'^admin/', admin.site.urls),
-    url(r'^register/$', register, name='register'),
-    url(r'^login/$', LoginView.as_view(template_name='users/login.html', redirect_authenticated_user=True), name='login'),
-    url(r'^logout/$', LogoutView.as_view(template_name='users/logout.html'), name='logout'),
-    url(r'^documents/', include('documents.urls')),
-    url(r'^/', include('users.urls'))
+    url(r'^users/', include('users.urls')),
 ]
 
 if settings.DEBUG:
