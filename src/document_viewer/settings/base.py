@@ -124,6 +124,10 @@ USE_TZ = True
 
 STATIC_URL = '/static/'
 MEDIA_URL = '/media/'
+WEB_URL = '/web/'
+BUILD_URL = '/build/'
+
+CDN_DOMAIN = "http://127.0.0.1:8000"
 
 STATICFILES_DIRS = [
     os.path.join(BASE_DIR, "static"),
@@ -131,7 +135,8 @@ STATICFILES_DIRS = [
 
 STATIC_ROOT = os.path.join(os.path.dirname(BASE_DIR), "static_cdn")
 MEDIA_ROOT = os.path.join(os.path.dirname(BASE_DIR), "media_cdn")
-
+WEB_ROOT = os.path.join(BASE_DIR, "web")
+BUILD_ROOT = os.path.join(BASE_DIR, "build")
 
 CRISPY_TEMPLATE_PACK = 'bootstrap4'
 

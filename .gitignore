@@ -3,4 +3,6 @@ $ echo "*.py[cod]
 __pycache__/
 *.py[cod]
 *$py.class
+media_cdn/
+static_cdn/
 " > .gitignore

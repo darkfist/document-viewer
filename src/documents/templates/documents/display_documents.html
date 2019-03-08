@@ -1,6 +1,5 @@
 {% extends "base.html" %}
 {% load staticfiles %}
-{% load apptags %}
 
 {% block content %}
 
@@ -16,22 +15,23 @@
 		</div>
 
 		{% for obj in object_list %}
-			{% with obj.doc_url.url|split:"%20" as document_url %}
-		        {% for url in document_url %}
 
 				<div class="row row-0-gutter">
 					<div class="col-md-8 col-md-offset-2 col-0-gutter">
 						<h2><strong>{{ obj.title }}</strong></h2>
 						<p>{{ obj.description }}</p>
-						<a href="/media/viewer.html?file={{ url|rem }}">
+						{% for doc in document_list %}
+						{% if doc.document_id == obj.id %}
+						<a href="/web/viewer.html?file={{ cdn }}/media/{{ doc.document_url }}">
 							<button class="btn btn-info">View Document</button>
-						</a>
+						</a> &nbsp;
+						{% endif %}
+						{% endfor %}
 						<hr>
 					</div>
 				</div>
 
-			{% endfor %}
-			{% endwith %}
+			
 			{% endfor %}
 
 		</div>
