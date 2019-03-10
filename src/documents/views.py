@@ -14,7 +14,7 @@ def add_documents(request):
 	if form.is_valid():
 		if request.user.is_authenticated():
 
-			# looping through all image fields and saving it's name in a single string
+			# looping through all file fields and saving it's name in a single string
 			all_doc_url = str(form.cleaned_data.get('document'))
 			for i in range(2,11):
 				extra = 'document' + str(i)
@@ -29,7 +29,7 @@ def add_documents(request):
 					uploaded_by = request.user
 				)
 			
-			# uploading the first image with same id
+			# uploading the first document with same id
 			query = Document.objects.latest('id')
 			obj = DocumentUpload.objects.create(
 					document_id = query.id,
@@ -37,7 +37,7 @@ def add_documents(request):
 					document_url = form.cleaned_data.get('document'),
 				)
 			
-			# looping through all other images and uploading with same id
+			# looping through all other documents and uploading with same id
 			for i in range(2,11):
 				extra = 'document' + str(i)
 				if (str(form.cleaned_data.get(extra)) != 'None'):
@@ -58,25 +58,25 @@ def add_documents(request):
 def display_documents(request):
 	template_name = 'documents/display_documents.html'
 
-	# querying Image table from db
+	# querying Document table from db
 	queryset1 = Document.objects.all().order_by('-pk')
 
-	# querying ImageUpload table from db
+	# querying DocumentUpload table from db
 	queryset2 = DocumentUpload.objects.all()
 
 	# domain of CDN where the documents will be uploaded
 	cdn = CDN_DOMAIN
-	
+
 	context = {"object_list": queryset1, "document_list":queryset2, "cdn":cdn}
 	return render(request, template_name, context)
 
 def user_documents(request):
 	template_name = 'documents/user_documents.html'
 
-	# querying Image table from db
+	# querying Document table from db
 	queryset1 = Document.objects.filter(uploaded_by=request.user).order_by('-pk')
 
-	# querying ImageUpload table from db
+	# querying DocumentUpload table from db
 	queryset2 = DocumentUpload.objects.all()
 
 	# domain of CDN where the documents will be uploaded

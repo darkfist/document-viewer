@@ -100,6 +100,7 @@ USE_TZ = True
 STATIC_URL = '/static/'
 MEDIA_URL = '/media/'
 
+# domain of CDN where the documents will be uploaded
 CDN_DOMAIN = "http://127.0.0.1:8000"
 
 STATICFILES_DIRS = [
