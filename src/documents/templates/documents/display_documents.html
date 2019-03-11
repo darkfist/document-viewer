@@ -23,15 +23,13 @@
 						{% for doc in document_list %}
 						{% if doc.document_id == obj.id %}
 						<a href="/viewerjs/index.html#{{ cdn }}/media/{{ doc.document_url }}" target="_blank">
-							<button class="btn btn-info">View Document</button>
-						</a> &nbsp;
+							<button class="btn btn-info" style="margin: 0 5px 10px 0;">View Document</button>
+						</a>
 						{% endif %}
 						{% endfor %}
 						<hr>
 					</div>
 				</div>
-
-			
 			{% endfor %}
 
 		</div>

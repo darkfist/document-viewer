@@ -1,6 +1,6 @@
 from django.contrib.auth.decorators import login_required
-from django.http import HttpResponse, HttpResponseRedirect
-from django.shortcuts import render, get_object_or_404
+from django.contrib import messages
+from django.shortcuts import render, redirect, get_object_or_404
 from document_viewer.settings import CDN_DOMAIN
 
 from .models import Document, DocumentUpload
@@ -46,7 +46,7 @@ def add_documents(request):
 						name = form.cleaned_data.get('title'), 
 						document_url = form.cleaned_data.get(extra),
 					)
-			return HttpResponseRedirect('/')
+			return redirect('documents:view')
 			
 	if form.errors:
 		errors = form.errors
@@ -70,6 +70,8 @@ def display_documents(request):
 	context = {"object_list": queryset1, "document_list":queryset2, "cdn":cdn}
 	return render(request, template_name, context)
 
+
+@login_required(login_url='/login/')
 def user_documents(request):
 	template_name = 'documents/user_documents.html'
 
@@ -84,3 +86,13 @@ def user_documents(request):
 
 	context = {"object_list": queryset1, "document_list":queryset2, "cdn":cdn}
 	return render(request, template_name, context)
+
+
+@login_required(login_url='/login/')
+def delete_document(request, pk):
+	# querying Document table from db to get single row and deleting it
+	instance1 = get_object_or_404(Document, pk=pk).delete()
+	instance2 = DocumentUpload.objects.filter(document_id=pk).delete()
+
+	messages.success(request, "successfully deleted the document")
+	return redirect('documents:user_doc')
