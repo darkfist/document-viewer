@@ -110,11 +110,9 @@ STATICFILES_DIRS = [
 STATIC_ROOT = os.path.join(os.path.dirname(BASE_DIR), "static_cdn")
 MEDIA_ROOT = os.path.join(os.path.dirname(BASE_DIR), "media_cdn")
 
-# for using pdf.js
-WEB_URL = '/web/'
-BUILD_URL = '/build/'
-WEB_ROOT = os.path.join(BASE_DIR, "web")
-BUILD_ROOT = os.path.join(BASE_DIR, "build")
+# for using ViewerJS
+VIEWERJS_URL = '/viewerjs/'
+VIEWERJS_ROOT = os.path.join(BASE_DIR, "ViewerJS")
 
 CRISPY_TEMPLATE_PACK = 'bootstrap4'
 

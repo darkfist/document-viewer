@@ -4,7 +4,6 @@
 
 {% block content %}
 
-
 		<section>
 			<div class="container">
 
@@ -24,7 +23,7 @@
 							<p>{{ obj.description }}</p>
 							{% for doc in document_list %}
 							{% if doc.document_id == obj.id %}
-							<a href="/web/viewer.html?file={{ cdn }}/media/{{ doc.document_url }}" target="_blank">
+							<a href="/viewerjs/index.html#{{ cdn }}/media/{{ doc.document_url }}" target="_blank">
 								<button class="btn btn-info">View Document</button>
 							</a> &nbsp;
 							{% endif %}

@@ -14,5 +14,4 @@ urlpatterns = [
 if settings.DEBUG:
     urlpatterns += static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
     urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
-    urlpatterns += static(settings.WEB_URL, document_root=settings.WEB_ROOT)
-    urlpatterns += static(settings.BUILD_URL, document_root=settings.BUILD_ROOT)
+    urlpatterns += static(settings.VIEWERJS_URL, document_root=settings.VIEWERJS_ROOT)
