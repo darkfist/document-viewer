@@ -7,9 +7,8 @@
 		<meta http-equiv="X-UA-Compatible" content="IE=edge">
 		<meta name="viewport" content="width=device-width, initial-scale=1">
 		
-		<meta name="description" content="">
+		<meta name="description" content="A simple Document Viewer made with Python and Django.">
 		<meta name="author" content="Nishant Ranjan">
-		<link rel="icon" href="favicon.ico">
 		<title>Django Document Viewer</title>
 		<!-- Bootstrap core CSS -->
 		<link href="{% static 'css/bootstrap.min.css' %}" rel="stylesheet">
@@ -30,7 +29,7 @@
 					<span class="icon-bar"></span>
 					<span class="icon-bar"></span>
 					</button>
-					<a class="navbar-brand page-scroll" href="#page-top"><h1><strong><em>Django Document Viewer</em></strong></h1></a>
+					<a class="navbar-brand page-scroll" href="{% url 'documents:view' %}"><h1><strong><em>Django Document Viewer</em></strong></h1></a>
 				</div>
 				<!-- Collect the nav links, forms, and other content for toggling -->
 				<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
