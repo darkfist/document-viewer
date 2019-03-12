@@ -118,4 +118,5 @@ VIEWERJS_ROOT = os.path.join(BASE_DIR, "ViewerJS")
 
 CRISPY_TEMPLATE_PACK = 'bootstrap4'
 
+LOGIN_URL ='/users/login/'
 LOGIN_REDIRECT_URL = '/'

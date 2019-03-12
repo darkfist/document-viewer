@@ -19,7 +19,6 @@ class Document(models.Model):
 	uploaded_by	= models.ForeignKey(User)
 	title 		= models.CharField(max_length=120, null=False, blank=False)
 	description = models.TextField(null=True, blank=True)
-	doc_url 	= models.TextField(null=True, blank=True)
 	timestamp	= models.DateTimeField(auto_now_add=True)
 	updated		= models.DateTimeField(auto_now=True)
 	slug 		= models.SlugField(null=True, blank=True)

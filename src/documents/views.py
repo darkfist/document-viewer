@@ -7,25 +7,17 @@ from .models import Document, DocumentUpload
 from .forms import AddDocument
 
 
-@login_required(login_url='/login/')
+@login_required()
 def add_documents(request):
 	form = AddDocument(request.POST or None, request.FILES or None)
 	errors = None
 	if form.is_valid():
 		if request.user.is_authenticated():
 
-			# looping through all file fields and saving it's name in a single string
-			all_doc_url = str(form.cleaned_data.get('document'))
-			for i in range(2,11):
-				extra = 'document' + str(i)
-				if (str(form.cleaned_data.get(extra)) != 'None'):
-					all_doc_url = all_doc_url + " " + str(form.cleaned_data.get(extra))
-			
 			# saving the details in the db
 			obj = Document.objects.create(
 					title = form.cleaned_data.get('title'), 
 					description = form.cleaned_data.get('description'),
-					doc_url = all_doc_url,
 					uploaded_by = request.user
 				)
 			
@@ -71,7 +63,7 @@ def display_documents(request):
 	return render(request, template_name, context)
 
 
-@login_required(login_url='/login/')
+@login_required()
 def user_documents(request):
 	template_name = 'documents/user_documents.html'
 
@@ -88,7 +80,7 @@ def user_documents(request):
 	return render(request, template_name, context)
 
 
-@login_required(login_url='/login/')
+@login_required()
 def delete_document(request, pk):
 	# querying Document table from db to get single row and deleting it
 	instance1 = get_object_or_404(Document, pk=pk).delete()
