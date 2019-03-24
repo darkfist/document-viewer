@@ -29,9 +29,13 @@
 							{% endif %}
 							{% endfor %}
 							<br>
+							{% if request.user.is_authenticated %}
+							{% if obj.uploaded_by == request.user %}
 							<a href="{% url 'documents:delete' pk=obj.pk %}">
 								<button class="btn btn-danger">Delete Document</button>
 							</a>
+							{% endif %}
+							{% endif %}
 							<hr>
 						</div>
 					</div>

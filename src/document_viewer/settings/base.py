@@ -64,8 +64,8 @@ DATABASES = {
     'default': {
         'ENGINE'    : 'django.db.backends.mysql',
         'NAME'      : 'documentsDB',
-        'USER'      : 'root',
-        'PASSWORD'  : 'darkfist123',
+        'USER'      : '', # your MySQL username
+        'PASSWORD'  : '', # your MySQL pasword
     }
 }
 

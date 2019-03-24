@@ -5,5 +5,3 @@ __pycache__/
 *$py.class
 
 " > .gitignore
-media_cdn/
-static_cdn/

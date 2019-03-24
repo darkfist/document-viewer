@@ -12,7 +12,7 @@ def register(request):
 	if form.is_valid():
 		form.save()
 		messages.success(request, 'Account created successfully! Now login to continue.')
-		return HttpResponseRedirect('/login/')
+		return HttpResponseRedirect('/users/login/')
 	
 	if form.errors:
 		errors = form.errors

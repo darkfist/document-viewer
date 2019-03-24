@@ -12,15 +12,12 @@ Accepted Document Formats : PDF, ODT, FODT
 
 After cloning the repository on your machine move into the ```src\``` directory and install the dependencies by ```pip install requirements.txt```
 
-Then run the following commands to create the required directories:
-```
-~/src$ mkdir ../media_cdn
-~/src$ mkdir ../static_cdn
-```
 
 ##### Connecting to database:
 This application requires MySQL Database.
-Create a database with name "imagesDB" and set the MySQL username and password in the ```base.py``` file of settings module present at ```src\document_viewer\settings```.
+Check [this link](https://goo.gl/85wAeM) if you don't know how to install MySQL.
+
+Create a database with name "documentsDB" and set the MySQL username and password in the ```base.py``` file present at ```src\document_viewer\settings```.
 
 ## Starting the App
 from the ```src\``` directory run the following commands:
@@ -48,6 +45,10 @@ You can also go to ```http://127.0.0.1:8000/admin``` in your browser and login w
 - Users can give title and description to the documents.
 - Users can view the documents (with or without login).
 - Users can delete their own documents.
+
+## Library's Used
+
+- [Viewer.JS](https://viewerjs.org/)
 
 ## Development
 
