@@ -22,10 +22,10 @@ Create a database with name "documentsDB" and set the MySQL username and passwor
 ## Starting the App
 from the ```src\``` directory run the following commands:
 ```
-~/src$ python manage.py makemigrations
-~/src$ python manage.py migrate
-~/src$ python manage.py collectstatic
-~/src$ python manage.py createsuperuser
+~/src$ python3 manage.py makemigrations
+~/src$ python3 manage.py migrate
+~/src$ python3 manage.py collectstatic
+~/src$ python3 manage.py createsuperuser
 ```
 then enter the details which will be asked, like username, email and password.
 
