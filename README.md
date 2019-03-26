@@ -8,6 +8,10 @@ A simple Document Viewer made with Python and Django.
 Django Document Viewer is a platform where users can register and then upload their documents. These documents can be viewed by anyone.
 Accepted Document Formats : PDF, ODT, FODT
 
+## Demo Video
+
+You can watch the demo and explanatory video for this project on Youtube [here](https://youtu.be/fk-eMvCS6sM).
+
 ## Installation and Dependencies
 
 After cloning the repository on your machine move into the ```src\``` directory and install the dependencies by ```pip install -r requirements.txt```
