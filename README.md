@@ -10,7 +10,7 @@ Accepted Document Formats : PDF, ODT, FODT
 
 ## Installation and Dependencies
 
-After cloning the repository on your machine move into the ```src\``` directory and install the dependencies by ```pip install requirements.txt```
+After cloning the repository on your machine move into the ```src\``` directory and install the dependencies by ```pip install -r requirements.txt```
 
 
 ##### Connecting to database:
@@ -32,7 +32,7 @@ then enter the details which will be asked, like username, email and password.
 Now the app is fully setup.
 Run the following command to start the app in your browser:
 ```
-~/src$ python manage.py runserver
+~/src$ python3 manage.py runserver
 ```
 Now just go to ```http://127.0.0.1:8000``` in your browser to access the app.
 You can also go to ```http://127.0.0.1:8000/admin``` in your browser and login with your 'superuser' credentials (created in previous step) to access the admin panel.
